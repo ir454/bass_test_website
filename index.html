@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>NYC — Generative Motion</title>
+<title>NYC — Generative Wireframe</title>
 
 <style>
   * {
@@ -15,7 +15,7 @@
   html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* NO SCROLL */
+    overflow: hidden;
     background: #fff;
     font-family: Helvetica, Arial, sans-serif;
   }
@@ -36,30 +36,24 @@
     text-transform: uppercase;
     z-index: 10;
     color: #000;
-    mix-blend-mode: difference;
     pointer-events: none;
   }
 
   .shape {
     position: absolute;
     opacity: 0.8;
-    mix-blend-mode: multiply;
     animation: drift linear infinite;
   }
 
-  .square {
-    width: 80px;
-    height: 80px;
-  }
-
-  .rectangle {
-    width: 160px;
-    height: 50px;
+  /* OUTLINE STYLES */
+  .square, .rectangle {
+    border: 2px solid #000;
+    background: transparent;
   }
 
   .circle {
-    width: 90px;
-    height: 90px;
+    border: 2px solid #000;
+    background: transparent;
     border-radius: 50%;
   }
 
@@ -68,8 +62,12 @@
     height: 0;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
-    border-bottom: 90px solid;
+    border-bottom: 90px solid transparent;
+    border-bottom-color: #000;
   }
+
+  .small { transform: scale(0.6); }
+  .large { transform: scale(1.5); }
 
   @keyframes drift {
     from {
@@ -90,9 +88,8 @@
 
 <script>
   const canvas = document.getElementById("canvas");
-  const colors = ["#FF3B3F", "#3B7CFF", "#F7FF3B", "#3BFF91", "#E53BFF", "#FF913B"];
   const shapes = ["square", "rectangle", "circle", "triangle"];
-  const maxShapes = 35;
+  const maxShapes = 40;
 
   function random(min, max) {
     return Math.random() * (max - min) + min;
@@ -101,18 +98,11 @@
   function createShape() {
     const shape = document.createElement("div");
     const type = shapes[Math.floor(Math.random() * shapes.length)];
-    const color = colors[Math.floor(Math.random() * colors.length)];
 
     shape.classList.add("shape", type);
 
     shape.style.left = random(0, 90) + "vw";
     shape.style.top = random(0, 90) + "vh";
-
-    if (type === "triangle") {
-      shape.style.borderBottomColor = color;
-    } else {
-      shape.style.background = color;
-    }
 
     shape.style.setProperty("--x", random(-200, 200) + "px");
     shape.style.setProperty("--y", random(-200, 200) + "px");
@@ -123,14 +113,12 @@
 
     canvas.appendChild(shape);
 
-    // Remove and regenerate to keep it alive
     setTimeout(() => {
       shape.remove();
       createShape();
     }, duration * 1000);
   }
 
-  // Initial generation
   for (let i = 0; i < maxShapes; i++) {
     createShape();
   }
