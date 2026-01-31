@@ -5,25 +5,31 @@
 <title>Electric Bass</title>
 <style>
 html,body{margin:0;height:100%;font-family:monospace;background:#000;color:#fff;overflow:hidden}
-#bass{position:relative;margin:auto;top:5vh;width:300px;height:90vh;background:linear-gradient(135deg,#6f0,#f0f,#0ff);border-radius:150px}
+#bass{position:relative;margin:auto;top:5vh;width:300px;height:90vh;
+background:linear-gradient(135deg,#6f0,#f0f,#0ff);border-radius:150px;cursor:pointer}
 #neck{position:absolute;top:-5vh;left:120px;width:60px;height:30vh;background:#222}
 #head{position:absolute;top:-10vh;left:90px;width:120px;height:10vh;background:#444;border-radius:20px}
 #info{position:absolute;bottom:10%;padding:20px;text-align:center;background:rgba(0,0,0,.6)}
-h1{margin:0;font-size:24px}
-p{font-size:14px}
+h1{margin:0;font-size:24px}p{font-size:14px}
 </style>
 </head>
 <body>
 <div id="bass">
-  <div id="neck"></div>
-  <div id="head"></div>
+  <div id="neck"></div><div id="head"></div>
   <div id="info">
     <h1>Electric Bass</h1>
-    <p>Low-end power. Groove machine. The bridge between rhythm and melody.</p>
-    <p>Funk • Rock • Jazz • Psychedelia</p>
+    <p>Low-end power. Groove machine.</p>
   </div>
 </div>
 <script>
+const ctx=new AudioContext()
+bass.onmouseenter=()=>{let o=ctx.createOscillator(),g=ctx.createGain(),f=ctx.createBiquadFilter()
+o.type="sawtooth";o.frequency.value=80
+f.type="lowpass";f.frequency.setValueAtTime(500,ctx.currentTime)
+f.frequency.exponentialRampToValueAtTime(2000,ctx.currentTime+.2)
+g.gain.setValueAtTime(.3,ctx.currentTime)
+g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.3)
+o.connect(f).connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+.3)}
 setInterval(()=>bass.style.filter=`hue-rotate(${Date.now()/20}deg)`,50)
 </script>
 </body>
