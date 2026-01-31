@@ -6,7 +6,6 @@
   <title>NYC — Movement & Connection</title>
 
   <style>
-    /* ---- GLOBAL RESET ---- */
     * {
       margin: 0;
       padding: 0;
@@ -16,11 +15,10 @@
     html, body {
       width: 100%;
       height: 100%;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      font-family: Arial, Helvetica, sans-serif;
       background: #fff;
       color: #000;
+      overflow-x: hidden;
     }
 
     section {
@@ -35,48 +33,57 @@
     }
 
     h1, h2 {
-      font-weight: bold;
+      font-weight: 800;
       text-transform: uppercase;
+      z-index: 2;
       pointer-events: none;
     }
 
-    h1 { font-size: 6vw; }
-    h2 { font-size: 3vw; margin-top: 1rem; }
+    h1 { font-size: 8vw; }
+    h2 { font-size: 4vw; }
 
-    /* ---- RANDOM COLORS ---- */
-    .color-splash {
+    /* ---------------- SHAPES ---------------- */
+
+    .shape {
       position: absolute;
+      opacity: 0.75;
       mix-blend-mode: multiply;
-      opacity: 0.7;
-      animation: float 8s infinite ease-in-out;
+      animation: drift 12s infinite alternate ease-in-out;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* ---- SHAPES ---- */
     .square {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
+    }
+
+    .rectangle {
+      width: 180px;
+      height: 60px;
     }
 
     .circle {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
     }
 
     .triangle {
       width: 0;
       height: 0;
-      border-left: 70px solid transparent;
-      border-right: 70px solid transparent;
-      border-bottom: 120px solid;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 100px solid;
     }
 
-    /* ---- SPECIFIC SECTIONS ---- */
+    .small { transform: scale(0.6); }
+    .large { transform: scale(1.5); }
+
+    @keyframes drift {
+      0%   { transform: translate(0,0) rotate(0deg); }
+      100% { transform: translate(40px,-60px) rotate(20deg); }
+    }
+
+    /* ---------------- SECTIONS ---------------- */
 
     #hero {
       background: #000;
@@ -84,76 +91,82 @@
     }
 
     #hero h1 {
-      font-size: 8vw;
-      animation: heroFade 3s ease-in-out infinite alternate;
+      animation: pulse 3s infinite alternate;
     }
 
-    @keyframes heroFade {
-      0% { opacity: 0.4; }
-      100% { opacity: 1; }
+    @keyframes pulse {
+      from { opacity: 0.4; }
+      to   { opacity: 1; }
     }
 
-    #movements, #connections, #culture {
-      font-size: 4vw;
-    }
+    /* ---------------- RANDOM POSITIONS ---------------- */
 
-    /* ---- RANDOM POSITION HELPERS ---- */
-
-    .r0 { top: 10%; left: 15%; }
-    .r1 { top: 20%; left: 80%; }
-    .r2 { top: 60%; left: 25%; }
-    .r3 { top: 70%; left: 65%; }
+    .p1 { top: 10%; left: 10%; }
+    .p2 { top: 20%; left: 75%; }
+    .p3 { top: 40%; left: 20%; }
+    .p4 { top: 60%; left: 70%; }
+    .p5 { top: 75%; left: 30%; }
+    .p6 { top: 50%; left: 50%; }
+    .p7 { top: 15%; left: 50%; }
+    .p8 { top: 80%; left: 80%; }
   </style>
 </head>
 
 <body>
 
-  <!-- ------ HERO ------ -->
-  <section id="hero">
-    <h1>NYC MOVES</h1>
-  </section>
+<!-- HERO -->
+<section id="hero">
+  <h1>NYC MOVES</h1>
 
-  <!-- ------ MOVEMENT ------ -->
-  <section id="movements">
-    <h2>Movement</h2>
+  <div class="shape square p1 large" style="background:#FF3B3F;"></div>
+  <div class="shape rectangle p2" style="background:#3B7CFF;"></div>
+  <div class="shape circle p3 small" style="background:#F7FF3B;"></div>
+  <div class="shape triangle p4" style="border-bottom-color:#3BFF91;"></div>
+</section>
 
-    <!-- Random Shapes -->
-    <div class="square color-splash r0" style="background: #FF3B3F;"></div>
-    <div class="circle color-splash r1" style="background: #3B7CFF;"></div>
-    <div class="triangle color-splash r2" style="border-bottom-color: #F7FF3B;"></div>
-    <div class="square color-splash r3" style="background: #3BFF91;"></div>
-  </section>
+<!-- MOVEMENT -->
+<section>
+  <h2>Movement</h2>
 
-  <!-- ------ CONNECTIONS ------ -->
-  <section id="connections">
-    <h2>Connections</h2>
+  <div class="shape square p5" style="background:#FF913B;"></div>
+  <div class="shape rectangle p6 large" style="background:#3B7CFF;"></div>
+  <div class="shape circle p2" style="background:#E53BFF;"></div>
+  <div class="shape triangle p7 small" style="border-bottom-color:#3BFF91;"></div>
+  <div class="shape square p8 small" style="background:#FF3B3F;"></div>
+</section>
 
-    <div class="circle color-splash r1" style="background: #FF3B3F;"></div>
-    <div class="square color-splash r2" style="background: #3BFF91;"></div>
-    <div class="triangle color-splash r0" style="border-bottom-color: #E53BFF;"></div>
-  </section>
+<!-- CONNECTIONS -->
+<section>
+  <h2>Connections</h2>
 
-  <!-- ------ CULTURE ------ -->
-  <section id="culture">
-    <h2>Culture</h2>
+  <div class="shape circle p1 large" style="background:#F7FF3B;"></div>
+  <div class="shape rectangle p4" style="background:#FF3B3F;"></div>
+  <div class="shape square p6" style="background:#3BFF91;"></div>
+  <div class="shape triangle p2" style="border-bottom-color:#3B7CFF;"></div>
+  <div class="shape rectangle p7 small" style="background:#E53BFF;"></div>
+</section>
 
-    <div class="square color-splash r3" style="background: #3B7CFF;"></div>
-    <div class="circle color-splash r0" style="background: #F7FF3B;"></div>
-    <div class="triangle color-splash r1" style="border-bottom-color: #FF913B;"></div>
-  </section>
+<!-- CULTURE -->
+<section>
+  <h2>Culture</h2>
 
-  <!-- ------ FOOTER ------ -->
-  <section id="footer">
-    <h2>NYC. ALWAYS MOVING.</h2>
-  </section>
+  <div class="shape square p3 large" style="background:#3B7CFF;"></div>
+  <div class="shape circle p8" style="background:#FF913B;"></div>
+  <div class="shape triangle p1" style="border-bottom-color:#F7FF3B;"></div>
+  <div class="shape rectangle p5 small" style="background:#3BFF91;"></div>
+</section>
 
-  <script>
-    // Optional: Random shape motion
-    document.querySelectorAll('.color-splash').forEach(function(s){
-      const delay = Math.random() * 4 - 2;
-      s.style.animationDelay = delay + 's';
-    });
-  </script>
+<!-- END -->
+<section>
+  <h2>NYC. ALWAYS MOVING.</h2>
+</section>
+
+<script>
+  // Random animation delays for organic movement
+  document.querySelectorAll('.shape').forEach(shape => {
+    shape.style.animationDelay = `${Math.random() * -10}s`;
+  });
+</script>
 
 </body>
 </html>
