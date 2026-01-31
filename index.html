@@ -1,36 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Electric Bass</title>
 <style>
-html,body{margin:0;height:100%;font-family:monospace;background:#000;color:#fff;overflow:hidden}
-#bass{position:relative;margin:auto;top:5vh;width:300px;height:90vh;
-background:linear-gradient(135deg,#6f0,#f0f,#0ff);border-radius:150px;cursor:pointer}
-#neck{position:absolute;top:-5vh;left:120px;width:60px;height:30vh;background:#222}
-#head{position:absolute;top:-10vh;left:90px;width:120px;height:10vh;background:#444;border-radius:20px}
-#info{position:absolute;bottom:10%;padding:20px;text-align:center;background:rgba(0,0,0,.6)}
-h1{margin:0;font-size:24px}p{font-size:14px}
+html,body{
+  margin:0;height:100%;background:#000;color:#fff;
+  font-family:monospace;overflow:hidden;
+}
+#bass{
+  position:relative;margin:auto;top:5vh;
+  width:300px;height:90vh;cursor:pointer;
+  background:linear-gradient(135deg,#6f0,#f0f,#0ff);
+  border-radius:150px;
+}
+#neck{
+  position:absolute;top:-5vh;left:120px;
+  width:60px;height:30vh;background:#222;
+}
+#head{
+  position:absolute;top:-10vh;left:90px;
+  width:120px;height:10vh;background:#444;border-radius:20px;
+}
+#info{
+  position:absolute;bottom:8%;left:10%;right:10%;
+  padding:15px;text-align:center;
+  background:rgba(0,0,0,.6);
+}
+h1{margin:0;font-size:24px}
+p{font-size:14px;margin:5px 0}
+#hint{font-size:12px;opacity:.7}
 </style>
 </head>
 <body>
+
 <div id="bass">
-  <div id="neck"></div><div id="head"></div>
+  <div id="neck"></div>
+  <div id="head"></div>
   <div id="info">
     <h1>Electric Bass</h1>
-    <p>Low-end power. Groove machine.</p>
+    <p>The groove engine of modern music.</p>
+    <p>Funk • Rock • Jazz • Psychedelia</p>
+    <p id="hint">Click to unlock sound • Hover to play</p>
   </div>
 </div>
+
 <script>
-const ctx=new AudioContext()
-bass.onmouseenter=()=>{let o=ctx.createOscillator(),g=ctx.createGain(),f=ctx.createBiquadFilter()
-o.type="sawtooth";o.frequency.value=80
-f.type="lowpass";f.frequency.setValueAtTime(500,ctx.currentTime)
-f.frequency.exponentialRampToValueAtTime(2000,ctx.currentTime+.2)
-g.gain.setValueAtTime(.3,ctx.currentTime)
-g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.3)
-o.connect(f).connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+.3)}
-setInterval(()=>bass.style.filter=`hue-rotate(${Date.now()/20}deg)`,50)
+let ctx,unlocked=false
+bass.onclick=()=>{if(!unlocked){ctx=new AudioContext();unlocked=true}}
+
+bass.onmouseenter=()=>{
+  if(!unlocked)return
+  let o=ctx.createOscillator(),
+      g=ctx.createGain(),
+      f=ctx.createBiquadFilter()
+  o.type="sawtooth"
+  o.frequency.value=70+Math.random()*20
+  f.type="lowpass"
+  f.frequency.setValueAtTime(300,ctx.currentTime)
+  f.frequency.exponentialRampToValueAtTime(2000,ctx.currentTime+.25)
+  g.gain.setValueAtTime(.35,ctx.currentTime)
+  g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.35)
+  o.connect(f).connect(g).connect(ctx.destination)
+  o.start();o.stop(ctx.currentTime+.4)
+}
+
+setInterval(()=>{
+  bass.style.filter=`hue-rotate(${Date.now()/20}deg)`
+},50)
 </script>
+
 </body>
 </html>
