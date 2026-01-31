@@ -1,136 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Psychedelic Bass</title>
-<style>
-html,body{margin:0;height:100%;background:#000;color:#fff;font-family:monospace;overflow:hidden}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NYC — Movement & Connection</title>
 
-#bass{
-  position:relative;margin:auto;top:5vh;
-  width:260px;height:80vh;cursor:pointer;
-  background:linear-gradient(135deg,#6f0,#f0f,#0ff);
-  border-radius:60% 40% 55% 45% / 45% 55% 40% 60%;
-  filter:drop-shadow(0 0 20px #0ff);
-}
-#bass:before,#bass:after{
-  content:"";position:absolute;background:inherit;
-}
-#bass:before{
-  width:180px;height:240px;left:-70px;bottom:90px;
-  border-radius:60% 40% 60% 40%;
-}
-#bass:after{
-  width:160px;height:200px;right:-60px;bottom:170px;
-  border-radius:40% 60% 40% 60%;
-}
+  <style>
+    /* ---- GLOBAL RESET ---- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-#neck{
-  position:absolute;top:-30vh;left:95px;
-  width:70px;height:30vh;background:#222;
-}
-#head{
-  position:absolute;top:-38vh;left:70px;
-  width:120px;height:8vh;background:#444;
-  border-radius:20px 40px 20px 40px;
-}
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background: #fff;
+      color: #000;
+    }
 
-/* PICKUPS */
-.pickup{
-  position:absolute;width:120px;height:20px;
-  background:#111;border-radius:6px;
-  left:70px;box-shadow:0 0 10px #000;
-}
-.pickup.p1{top:45%}
-.pickup.p2{top:52%}
+    section {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
 
-.pickup:hover{
-  box-shadow:0 0 25px #f0f,0 0 40px #0ff;
-}
+    h1, h2 {
+      font-weight: bold;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
 
-/* KNOBS */
-.knob{
-  position:absolute;width:28px;height:28px;
-  background:radial-gradient(#555,#111);
-  border-radius:50%;
-  bottom:18%;right:45px;
-  box-shadow:0 0 10px #000;
-}
-.knob.k2{right:80px;bottom:22%}
+    h1 { font-size: 6vw; }
+    h2 { font-size: 3vw; margin-top: 1rem; }
 
-.knob:hover{
-  box-shadow:0 0 20px #6f0,0 0 35px #f0f;
-}
+    /* ---- RANDOM COLORS ---- */
+    .color-splash {
+      position: absolute;
+      mix-blend-mode: multiply;
+      opacity: 0.7;
+      animation: float 8s infinite ease-in-out;
+    }
 
-/* INFO */
-#info{
-  position:absolute;bottom:8%;left:8%;right:8%;
-  background:rgba(0,0,0,.6);
-  padding:12px;text-align:center;
-}
-h1{margin:0;font-size:22px}
-p{font-size:13px;margin:4px 0}
-</style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* ---- SHAPES ---- */
+    .square {
+      width: 120px;
+      height: 120px;
+    }
+
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-bottom: 120px solid;
+    }
+
+    /* ---- SPECIFIC SECTIONS ---- */
+
+    #hero {
+      background: #000;
+      color: #fff;
+    }
+
+    #hero h1 {
+      font-size: 8vw;
+      animation: heroFade 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroFade {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    #movements, #connections, #culture {
+      font-size: 4vw;
+    }
+
+    /* ---- RANDOM POSITION HELPERS ---- */
+
+    .r0 { top: 10%; left: 15%; }
+    .r1 { top: 20%; left: 80%; }
+    .r2 { top: 60%; left: 25%; }
+    .r3 { top: 70%; left: 65%; }
+  </style>
 </head>
+
 <body>
 
-<div id="bass">
-  <div id="neck"></div>
-  <div id="head"></div>
+  <!-- ------ HERO ------ -->
+  <section id="hero">
+    <h1>NYC MOVES</h1>
+  </section>
 
-  <div class="pickup p1"></div>
-  <div class="pickup p2"></div>
+  <!-- ------ MOVEMENT ------ -->
+  <section id="movements">
+    <h2>Movement</h2>
 
-  <div class="knob k1"></div>
-  <div class="knob k2"></div>
+    <!-- Random Shapes -->
+    <div class="square color-splash r0" style="background: #FF3B3F;"></div>
+    <div class="circle color-splash r1" style="background: #3B7CFF;"></div>
+    <div class="triangle color-splash r2" style="border-bottom-color: #F7FF3B;"></div>
+    <div class="square color-splash r3" style="background: #3BFF91;"></div>
+  </section>
 
-  <div id="info">
-    <h1>Electric Bass</h1>
-    <p>Synth pluck • Auto-wah • Psychedelia</p>
-    <p>Click to unlock • Touch the groove</p>
-  </div>
-</div>
+  <!-- ------ CONNECTIONS ------ -->
+  <section id="connections">
+    <h2>Connections</h2>
 
-<script>
-let ctx,ready=false
-bass.onclick=()=>{if(!ready){ctx=new AudioContext();ready=true}}
+    <div class="circle color-splash r1" style="background: #FF3B3F;"></div>
+    <div class="square color-splash r2" style="background: #3BFF91;"></div>
+    <div class="triangle color-splash r0" style="border-bottom-color: #E53BFF;"></div>
+  </section>
 
-function pluck(freq){
- if(!ready)return
- let t=ctx.currentTime,
-     o=ctx.createOscillator(),
-     g=ctx.createGain(),
-     f=ctx.createBiquadFilter()
+  <!-- ------ CULTURE ------ -->
+  <section id="culture">
+    <h2>Culture</h2>
 
- o.type="sawtooth"
- o.frequency.setValueAtTime(freq,t)
+    <div class="square color-splash r3" style="background: #3B7CFF;"></div>
+    <div class="circle color-splash r0" style="background: #F7FF3B;"></div>
+    <div class="triangle color-splash r1" style="border-bottom-color: #FF913B;"></div>
+  </section>
 
- f.type="lowpass";f.Q.value=10
- f.frequency.setValueAtTime(200,t)
- f.frequency.exponentialRampToValueAtTime(2200,t+.2)
- f.frequency.exponentialRampToValueAtTime(500,t+.45)
+  <!-- ------ FOOTER ------ -->
+  <section id="footer">
+    <h2>NYC. ALWAYS MOVING.</h2>
+  </section>
 
- g.gain.setValueAtTime(.0001,t)
- g.gain.exponentialRampToValueAtTime(.45,t+.02)
- g.gain.exponentialRampToValueAtTime(.001,t+.6)
-
- o.connect(f).connect(g).connect(ctx.destination)
- o.start(t);o.stop(t+.7)
-}
-
-bass.onmouseenter=()=>pluck(60)
-bass.onmousedown=()=>pluck(55)
-
-document.querySelectorAll('.pickup')
- .forEach(p=>p.onmouseenter=()=>pluck(70))
-
-document.querySelectorAll('.knob')
- .forEach(k=>k.onmouseenter=()=>pluck(45))
-
-setInterval(()=>{
- bass.style.filter=`hue-rotate(${Date.now()/15}deg) drop-shadow(0 0 30px hsl(${Date.now()/30},100%,60%))`
-},40)
-</script>
+  <script>
+    // Optional: Random shape motion
+    document.querySelectorAll('.color-splash').forEach(function(s){
+      const delay = Math.random() * 4 - 2;
+      s.style.animationDelay = delay + 's';
+    });
+  </script>
 
 </body>
 </html>
