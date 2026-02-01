@@ -9,44 +9,45 @@ html, body {
   height: 100%;
   background: #fff;
   font-family: Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 
 #canvas {
-  min-height: 100vh;
-  padding-top: 80px;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
 }
-
-/* SKYLINE — DEBUG SAFE */
-#skyline {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 20px;
-
-  /* DEBUG BACKGROUND — REMOVE LATER */
-  background: #f2f2f2;
-
-  padding: 40px 0;
-  margin-bottom: 120px; /* space for text */
-}
-
-/* CUBES — IMPOSSIBLE TO MISS */
-.cube {
-  width: 60px;
-  background: black;
-  outline: 2px solid red; /* DEBUG OUTLINE */
-}
-
-/* Art Deco stepped heights */
-.c1 { height: 80px; }
-.c2 { height: 140px; }
-.c3 { height: 200px; }
-.c4 { height: 260px; }
 
 /* Title */
 h1 {
-  margin-left: 5%;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
   font-size: 5vw;
   font-weight: 900;
   text-transform: uppercase;
+  color: #000;
 }
+
+/* Skyline plane */
+#skyline {
+  position: absolute;
+  bottom: 30%;           /* locked separation from text */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+/* Cube = building mass */
+.cube {
+  width: 64px;
+  background: #000;
+}
+
+/* Art Deco stepped hierarchy */
+.c1 { height: 80px; }
+.c2 { height: 140px; }
+.c3 { height: 220px; }
+.c4 { height: 320px; }
