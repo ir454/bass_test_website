@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>NYC — Generative Wireframe + WebGL Triangle</title>
+<title>NYC — Generative Wireframe + Centered WebGL Triangle</title>
 
 <style>
   * {
@@ -45,7 +45,6 @@
     animation: drift linear infinite;
   }
 
-  /* OUTLINE STYLES */
   .square, .rectangle {
     border: 2px solid #000;
     background: transparent;
@@ -78,15 +77,16 @@
     }
   }
 
-  /* THREE.JS CANVAS */
+  /* CENTERED WEBGL WINDOW */
   #webgl {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 5;
-    pointer-events: none;
+    background: transparent;
   }
 </style>
 </head>
@@ -97,7 +97,6 @@
   <h1>NYC MOVES</h1>
 </div>
 
-<!-- THREE.JS -->
 <canvas id="webgl"></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js"></script>
@@ -143,13 +142,12 @@
   const webglCanvas = document.getElementById("webgl");
   const scene = new THREE.Scene();
 
-  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
   camera.position.z = 5;
 
   const renderer = new THREE.WebGLRenderer({ canvas: webglCanvas, alpha: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(500, 500);
 
-  // Triangle geometry
   const geometry = new THREE.BufferGeometry();
   const vertices = new Float32Array([
     0, 1, 0,
@@ -164,22 +162,24 @@
   const triangle = new THREE.LineLoop(geometry, material);
   scene.add(triangle);
 
-  // Mouse movement
+  // Mouse movement only inside the webgl canvas
   let mouseX = 0;
   let mouseY = 0;
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  webglCanvas.addEventListener("mousemove", (e) => {
+    const rect = webglCanvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    mouseX = (x / rect.width) * 2 - 1;
+    mouseY = -(y / rect.height) * 2 + 1;
   });
 
   function animate() {
     requestAnimationFrame(animate);
 
-    // Move triangle with mouse
-    triangle.position.x = mouseX * 2;
-    triangle.position.y = mouseY * 2;
-
+    triangle.position.x = mouseX * 1.5;
+    triangle.position.y = mouseY * 1.5;
     triangle.rotation.z += 0.01;
 
     renderer.render(scene, camera);
@@ -188,8 +188,8 @@
   animate();
 
   window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
+    renderer.setSize(500, 500);
+    camera.aspect = 1;
     camera.updateProjectionMatrix();
   });
 </script>
