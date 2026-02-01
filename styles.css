@@ -52,14 +52,15 @@ h1 {
 .c3 { height: 220px; }
 .c4 { height: 320px; }
 
-/* Borough names row */
+/* Borough names centered under skyline */
 #boroughs {
   position: absolute;
   bottom: 5%;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px; /* width matches skyline span */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-size: 1.2vw;
   font-weight: 700;
   letter-spacing: 0.1em;
