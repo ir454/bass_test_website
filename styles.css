@@ -19,6 +19,7 @@ html, body {
   background: #fff;
 }
 
+/* Title */
 h1 {
   position: absolute;
   bottom: 5%;
@@ -26,46 +27,24 @@ h1 {
   font-size: 5vw;
   font-weight: 900;
   text-transform: uppercase;
-  z-index: 10;
   color: #000;
-  pointer-events: none;
+  z-index: 10;
 }
 
-.shape {
-  position: absolute;
-  opacity: 0.8;
-  animation: drift linear infinite;
-}
-
-/* OUTLINE STYLES */
-.square, .rectangle {
-  border: 2px solid #000;
-  background: transparent;
-}
-
-.circle {
-  border: 2px solid #000;
-  background: transparent;
-  border-radius: 50%;
-}
-
+/* Base triangle */
 .triangle {
+  position: absolute;
   width: 0;
   height: 0;
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  border-bottom: 90px solid transparent;
-  border-bottom-color: #000;
+  border-bottom: 90px solid #000;
+  opacity: 0.85;
 }
 
-.small { transform: scale(0.6); }
-.large { transform: scale(1.5); }
-
-@keyframes drift {
-  from {
-    transform: translate(0,0) rotate(0deg);
-  }
-  to {
-    transform: translate(var(--x), var(--y)) rotate(var(--r));
-  }
-}
+/* Individual placements */
+.t1 { top: 10%; left: 15%; transform: rotate(10deg); }
+.t2 { top: 30%; left: 60%; transform: rotate(-25deg) scale(1.2); }
+.t3 { top: 55%; left: 25%; transform: rotate(40deg) scale(0.8); }
+.t4 { top: 20%; left: 80%; transform: rotate(-10deg); }
+.t5 { top: 65%; left: 55%; transform: rotate(70deg) scale(1.4); }
