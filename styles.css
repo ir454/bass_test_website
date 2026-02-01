@@ -34,7 +34,7 @@ html, body {
 
 h1 {
   position: absolute;
-  bottom: 18%;
+  bottom: 15%;   /* <-- move title up */
   left: 5%;
   font-size: 5vw;
   font-weight: 900;
