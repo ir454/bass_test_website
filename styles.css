@@ -19,8 +19,6 @@ html, body {
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-
-  /* optimized spacing between buildings */
   gap: 18px;
 }
 
@@ -36,7 +34,7 @@ html, body {
 
 h1 {
   position: absolute;
-  bottom: 11%;   /* moved down slightly for better separation */
+  bottom: 11%;
   left: 5%;
   font-size: 5vw;
   font-weight: 900;
@@ -49,11 +47,8 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   width: 560px;
-
-  /* optimized spacing between borough names */
   display: flex;
   justify-content: space-between;
-
   font-size: 1.2vw;
   font-weight: 700;
   letter-spacing: 0.1em;
