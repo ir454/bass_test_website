@@ -26,36 +26,30 @@ h1 {
   font-size: 5vw;
   font-weight: 900;
   text-transform: uppercase;
+  color: #000;
   z-index: 10;
 }
 
-/* Skyline row */
+/* Skyline plane */
 #skyline {
   position: absolute;
-  bottom: 25%; /* leaves space for title */
-  left: 5%;
-  right: 5%;
+  bottom: 30%; /* hard separation from text */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-  gap: 2vw;
+  gap: 1.5vw;
 }
 
-/* Triangle = building */
-.triangle {
-  width: 0;
-  height: 0;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 80px solid #000;
+/* Cube = building */
+.cube {
+  width: 4vw;
+  background: #000;
   opacity: 0.9;
-  transform-origin: bottom center;
 }
 
-/* Height variation */
-.t1 { transform: scaleY(0.8); }
-.t2 { transform: scaleY(1.6); }
-.t3 { transform: scaleY(1.1); }
-.t4 { transform: scaleY(2.0); }
-.t5 { transform: scaleY(0.9); }
-.t6 { transform: scaleY(1.4); }
-.t7 { transform: scaleY(1.2); }
+/* Art Deco stepped heights */
+.c1 { height: 10vh; }
+.c2 { height: 18vh; }
+.c3 { height: 26vh; }
+.c4 { height: 34vh; }
