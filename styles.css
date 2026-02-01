@@ -33,23 +33,23 @@ h1 {
 /* Skyline plane */
 #skyline {
   position: absolute;
-  bottom: 30%; /* hard separation from text */
+  bottom: 32%; /* safely above text */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: flex-end;
-  gap: 1.5vw;
+  gap: 20px;
 }
 
 /* Cube = building */
 .cube {
-  width: 4vw;
+  width: 60px;          /* FIXED, visible width */
   background: #000;
   opacity: 0.9;
 }
 
 /* Art Deco stepped heights */
-.c1 { height: 10vh; }
-.c2 { height: 18vh; }
-.c3 { height: 26vh; }
-.c4 { height: 34vh; }
+.c1 { height: 80px; }
+.c2 { height: 140px; }
+.c3 { height: 200px; }
+.c4 { height: 260px; }
