@@ -1,27 +1,17 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Full page */
 html, body {
   width: 100%;
   height: 100%;
+  margin: 0;
   overflow: hidden;
-  background: #fff;
   font-family: Helvetica, Arial, sans-serif;
 }
 
-/* Canvas */
 #canvas {
   position: relative;
   width: 100vw;
   height: 100vh;
 }
 
-/* Skyline */
 #skyline {
   position: absolute;
   bottom: 35%;
@@ -32,7 +22,6 @@ html, body {
   gap: 24px;
 }
 
-/* Cube blocks */
 .cube {
   width: 64px;
   background: #000;
@@ -43,7 +32,6 @@ html, body {
 .c3 { height: 220px; }
 .c4 { height: 320px; }
 
-/* Title */
 h1 {
   position: absolute;
   bottom: 18%;
@@ -51,10 +39,8 @@ h1 {
   font-size: 5vw;
   font-weight: 900;
   text-transform: uppercase;
-  color: #000;
 }
 
-/* Borough names centered under skyline */
 #boroughs {
   position: absolute;
   bottom: 5%;
@@ -72,8 +58,4 @@ h1 {
 #boroughs a {
   color: #000;
   text-decoration: none;
-}
-
-#boroughs a:hover {
-  text-decoration: underline;
 }
