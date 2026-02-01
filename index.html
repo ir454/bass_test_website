@@ -13,41 +13,43 @@
   </div>
 
   <script>
-    const canvas = document.getElementById("canvas");
-    const shapes = ["square", "rectangle", "circle", "triangle"];
-    const maxShapes = 40;
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("canvas");
+      const shapes = ["square", "rectangle", "circle", "triangle"];
+      const maxShapes = 40;
 
-    function random(min, max) {
-      return Math.random() * (max - min) + min;
-    }
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
 
-    function createShape() {
-      const shape = document.createElement("div");
-      const type = shapes[Math.floor(Math.random() * shapes.length)];
+      function createShape() {
+        const shape = document.createElement("div");
+        const type = shapes[Math.floor(Math.random() * shapes.length)];
 
-      shape.classList.add("shape", type);
+        shape.classList.add("shape", type);
 
-      shape.style.left = random(0, 90) + "vw";
-      shape.style.top = random(0, 90) + "vh";
+        shape.style.left = random(0, 90) + "vw";
+        shape.style.top = random(0, 90) + "vh";
 
-      shape.style.setProperty("--x", random(-200, 200) + "px");
-      shape.style.setProperty("--y", random(-200, 200) + "px");
-      shape.style.setProperty("--r", random(-180, 180) + "deg");
+        shape.style.setProperty("--x", random(-200, 200) + "px");
+        shape.style.setProperty("--y", random(-200, 200) + "px");
+        shape.style.setProperty("--r", random(-180, 180) + "deg");
 
-      const duration = random(8, 20);
-      shape.style.animationDuration = duration + "s";
+        const duration = random(8, 20);
+        shape.style.animationDuration = duration + "s";
 
-      canvas.appendChild(shape);
+        canvas.appendChild(shape);
 
-      setTimeout(() => {
-        shape.remove();
+        setTimeout(() => {
+          shape.remove();
+          createShape();
+        }, duration * 1000);
+      }
+
+      for (let i = 0; i < maxShapes; i++) {
         createShape();
-      }, duration * 1000);
-    }
-
-    for (let i = 0; i < maxShapes; i++) {
-      createShape();
-    }
+      }
+    });
   </script>
 </body>
 </html>
