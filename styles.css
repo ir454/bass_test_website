@@ -29,10 +29,10 @@ h1 {
   z-index: 10;
 }
 
-/* Skyline container */
+/* Skyline row */
 #skyline {
   position: absolute;
-  bottom: 22%; /* leaves space for NYC MOVES */
+  bottom: 25%; /* leaves space for title */
   left: 5%;
   right: 5%;
   display: flex;
@@ -40,46 +40,22 @@ h1 {
   gap: 2vw;
 }
 
-/* Building (triangle stack) */
-.building {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-}
-
-/* Triangle unit */
-.building::before {
-  content: "";
+/* Triangle = building */
+.triangle {
   width: 0;
   height: 0;
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
-  border-bottom: 55px solid #000;
+  border-bottom: 80px solid #000;
   opacity: 0.9;
+  transform-origin: bottom center;
 }
 
-/* Heights via repetition illusion */
-.b1::after,
-.b2::after,
-.b3::after,
-.b4::after,
-.b5::after,
-.b6::after {
-  content: "";
-}
-
-/* Building variations */
-.b1 { transform: scale(0.9); }
-.b2 { transform: scale(1.4); }
-.b3 { transform: scale(1.1); }
-.b4 { transform: scale(1.7); }
-.b5 { transform: scale(1.0); }
-.b6 { transform: scale(1.3); }
-
-/* Duplicate triangles for height */
-.b1::before { box-shadow: 0 -60px 0 #000; }
-.b2::before { box-shadow: 0 -60px 0 #000, 0 -120px 0 #000; }
-.b3::before { box-shadow: 0 -60px 0 #000, 0 -120px 0 #000, 0 -180px 0 #000; }
-.b4::before { box-shadow: 0 -60px 0 #000, 0 -120px 0 #000, 0 -180px 0 #000, 0 -240px 0 #000; }
-.b5::before { box-shadow: 0 -60px 0 #000, 0 -120px 0 #000; }
-.b6::before { box-shadow: 0 -60px 0 #000, 0 -120px 0 #000, 0 -180px 0 #000; }
+/* Height variation */
+.t1 { transform: scaleY(0.8); }
+.t2 { transform: scaleY(1.6); }
+.t3 { transform: scaleY(1.1); }
+.t4 { transform: scaleY(2.0); }
+.t5 { transform: scaleY(0.9); }
+.t6 { transform: scaleY(1.4); }
+.t7 { transform: scaleY(1.2); }
